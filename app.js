@@ -14,7 +14,9 @@ app.use(express.urlencoded({extended:true}));
 
 app.use('/user',userRouter);
 
-
+app.all("*",function(req,res,next){
+    res.status(404).json({success:false,message:`${req.url} route not found`});
+})
 
 
 
